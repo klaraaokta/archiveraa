@@ -1,0 +1,204 @@
+/* ===========================================================
+   ADMIN PAGE — pakai token warna & tipografi yang sama
+   dengan seluruh web (ivory/ink/navy/gold/rose)
+=========================================================== */
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--ivory); font-family: var(--font-body); color: var(--ink); }
+
+/* (gate PIN pad sekarang pakai style .gate dari style.css, shared dengan Home) */
+
+/* ---- shell ---- */
+.admin-app { min-height: 100vh; }
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--ink);
+  color: var(--ivory);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.admin-topbar-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+}
+.admin-topbar-link {
+  color: var(--gold);
+  font-size: 12.5px;
+  text-decoration: none;
+  border: 1px solid rgba(247,245,240,0.25);
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: background 0.2s var(--ease);
+}
+.admin-topbar-link:hover { background: rgba(247,245,240,0.08); }
+
+.admin-tabs {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 14px 20px;
+  background: var(--ivory-dim);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 53px;
+  z-index: 9;
+}
+.admin-tab {
+  flex-shrink: 0;
+  padding: 8px 15px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: #FFFFFF;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.admin-tab:hover { border-color: var(--plum); }
+.admin-tab.is-active { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+
+.admin-main { max-width: 760px; margin: 0 auto; padding: 28px 20px 60px; }
+
+/* ---- section head (hierarki jelas, konsisten sama halaman lain) ---- */
+.admin-section-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(24px, 6vw, 30px);
+  margin: 0 0 22px;
+  color: var(--ink);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--gold);
+}
+
+/* ---- cards & forms ---- */
+.admin-card {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(23,21,18,0.03);
+}
+.admin-field { margin-bottom: 14px; }
+.admin-field label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.admin-field input,
+.admin-field textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  background: var(--ivory);
+  color: var(--ink);
+  transition: border-color 0.2s var(--ease);
+}
+.admin-field input:focus,
+.admin-field textarea:focus { outline: none; border-color: var(--plum); background: #FFFFFF; }
+.admin-field textarea { resize: vertical; min-height: 76px; }
+
+.admin-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease), background 0.2s var(--ease);
+}
+.admin-btn:active { transform: scale(0.96); }
+.admin-btn--primary { background: var(--ink); color: var(--ivory); }
+.admin-btn--danger { background: none; color: var(--plum-deep); border: 1px solid var(--plum-deep); }
+.admin-btn-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+
+.admin-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.admin-item-body { flex: 1; min-width: 0; }
+.admin-item-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--plum-deep);
+  margin: 0 0 6px;
+}
+.admin-item-sub { font-size: 12.5px; color: var(--ink-soft); margin: 0; white-space: pre-wrap; line-height: 1.55; }
+.admin-empty {
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding: 30px 20px;
+  text-align: center;
+  background: var(--ivory-dim);
+  border-radius: 10px;
+}
+.admin-status { font-size: 12px; color: var(--plum-deep); margin: 12px 0 0; min-height: 16px; font-weight: 600; }
+
+.admin-add-toggle {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  background: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 18px;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.admin-add-toggle:hover { border-color: var(--plum); color: var(--plum-deep); background: var(--ivory-dim); }
+
+/* ===========================================================
+   RESPONSIVE — HP / tablet / laptop
+=========================================================== */
+
+/* small phones */
+@media (max-width: 380px) {
+  .admin-main { padding: 20px 14px 50px; }
+  .admin-topbar { padding: 14px 16px; }
+  .admin-tabs { padding: 12px 14px; }
+}
+
+/* tablet portrait and up */
+@media (min-width: 640px) {
+  .admin-main { max-width: 720px; padding: 32px 28px 70px; }
+  .admin-tabs { padding: 14px 28px; }
+  .admin-topbar { padding: 18px 28px; }
+  .admin-topbar-title { font-size: 16px; }
+}
+
+/* tablet landscape / small laptop: two-column card grid for list sections */
+@media (min-width: 900px) {
+  .admin-main { max-width: 920px; padding: 36px 36px 80px; }
+  .admin-tabs { padding: 16px 36px; }
+  .admin-topbar { padding: 20px 36px; }
+  #listWrap, #rdWrap { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: start; }
+  #listWrap .admin-card, #rdWrap .admin-card { margin-bottom: 0; }
+  #addFormWrap .admin-card, #profileWrap .admin-card, #lettersWrap .admin-card { max-width: 620px; }
+}
+
+/* laptop / desktop */
+@media (min-width: 1200px) {
+  .admin-main { max-width: 1080px; }
+  #listWrap, #rdWrap { grid-template-columns: repeat(3, 1fr); }
+  .admin-section-title { font-size: 32px; }
+}

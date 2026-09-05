@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#B6555F">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>admin — kelola konten</title>
+  <meta name="description" content="halaman khusus admin.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="admin — kelola konten">
+  <meta property="og:description" content="halaman khusus admin.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="admin — kelola konten">
+  <meta name="twitter:description" content="halaman khusus admin.">
+  <meta name="twitter:image" content="assets/img/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+
+<body>
+
+  <!-- PASSWORD GATE (PIN pad, senada Home) -->
+  <section class="gate" id="adminGate">
+    <div class="gate-noise"></div>
+    <div class="gate-inner">
+      <div class="gate-lock">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <rect x="5" y="11" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.6" />
+          <path d="M8.5 11V7.5a4.5 4.5 0 019 0V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </div>
+      <h1 class="gate-title">halaman <em>admin</em></h1>
+      <p class="gate-sub">masukkan PIN admin</p>
+
+      <div class="gate-dots" id="adminDots" aria-hidden="true"></div>
+
+      <div class="gate-keypad" id="adminKeypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2<span>ABC</span></button>
+        <button class="key" data-key="3">3<span>DEF</span></button>
+        <button class="key" data-key="4">4<span>GHI</span></button>
+        <button class="key" data-key="5">5<span>JKL</span></button>
+        <button class="key" data-key="6">6<span>MNO</span></button>
+        <button class="key" data-key="7">7<span>PQRS</span></button>
+        <button class="key" data-key="8">8<span>TUV</span></button>
+        <button class="key" data-key="9">9<span>WXYZ</span></button>
+        <button class="key key--ghost" data-key="clear" aria-label="Hapus">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7 5.5h9a1 1 0 011 1v7a1 1 0 01-1 1H7l-4.5-4.5L7 5.5z" stroke="currentColor" stroke-width="1.4"
+              stroke-linejoin="round" />
+            <path d="M9.5 8.3l3.4 3.4M12.9 8.3l-3.4 3.4" stroke="currentColor" stroke-width="1.4"
+              stroke-linecap="round" />
+          </svg>
+        </button>
+        <button class="key" data-key="0">0</button>
+        <button class="key key--ghost key--ok" data-key="ok">OK</button>
+      </div>
+
+      <p class="gate-hint" id="adminGateHint">&nbsp;</p>
+    </div>
+  </section>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-app" id="adminApp" hidden>
+    <header class="admin-topbar">
+      <span class="admin-topbar-title">kelola konten — untuk Frio</span>
+      <button class="admin-topbar-link" id="adminLogoutBtn" style="background:none;border:none;cursor:pointer;font:inherit;">keluar</button>
+      <a href="index.html" class="admin-topbar-link">← lihat web</a>
+    </header>
+
+    <nav class="admin-tabs" id="adminTabs">
+      <button class="admin-tab is-active" data-section="profile">Profil</button>
+      <button class="admin-tab" data-section="letters">Surat</button>
+      <button class="admin-tab" data-section="photos">Galeri</button>
+      <button class="admin-tab" data-section="timeline">Timeline</button>
+      <button class="admin-tab" data-section="things">Little Things</button>
+      <button class="admin-tab" data-section="reasons">19 Reasons</button>
+      <button class="admin-tab" data-section="mappoints">Peta</button>
+      <button class="admin-tab" data-section="tracks">Musik</button>
+      <button class="admin-tab" data-section="guestbook">Guestbook</button>
+      <button class="admin-tab" data-section="wishes">Wish Jar</button>
+    </nav>
+
+    <main class="admin-main" id="adminMain"></main>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+
+</html>

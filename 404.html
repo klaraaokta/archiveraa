@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#B6555F">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>halaman gak ketemu 🤍</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .notfound {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .notfound-emoji { font-size: 44px; margin-bottom: 6px; }
+    .notfound h1 {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(24px, 5vw, 32px);
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+    .notfound p {
+      color: var(--ink-soft);
+      font-size: 14.5px;
+      max-width: 320px;
+      margin: 0 0 26px;
+    }
+    .notfound a {
+      display: inline-block;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: var(--plum);
+      color: var(--ivory);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: 0 10px 24px rgba(182,85,95,0.28);
+    }
+    .notfound a:active { transform: scale(0.97); }
+  </style>
+</head>
+
+<body>
+  <div class="notfound">
+    <div class="notfound-emoji">🤍</div>
+    <h1>halaman ini belum ada ceritanya</h1>
+    <p>kayaknya kamu nyasar — halaman yang kamu cari gak ketemu. balik lagi ke halaman utama, yuk.</p>
+    <a href="index.html">← balik ke halaman utama</a>
+  </div>
+  <script src="assets/js/effects.js"></script>
+</body>
+
+</html>

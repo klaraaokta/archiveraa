@@ -1,0 +1,31 @@
+{
+  "name": "untuk Frio",
+  "short_name": "untuk Frio",
+  "description": "sebuah kejutan kecil, dari aku buat kamu.",
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#F7F5F0",
+  "theme_color": "#B6555F",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

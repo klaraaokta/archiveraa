@@ -1,0 +1,143 @@
+CATATAN PERBAIKAN — Website Ulang Tahun untuk Frio
+=====================================================
+
+BAGIAN A — BUG YANG SUDAH DIPERBAIKI (dari pengecekan pertama)
+---------------------------------------------------------------
+1. Halaman admin tidak bisa dibuka
+   Penyebab: gate PIN disembunyikan pakai atribut `hidden`, tapi
+   CSS .gate punya "display: flex" yang lebih kuat, jadi kotak PIN
+   tetap nongol menutupi panel walau PIN sudah benar.
+
+2. Bug yang sama juga berpotensi bikin lightbox galeri, popup peta,
+   kapsul, dan amplop surat tidak hilang dengan benar.
+   -> Diperbaiki lewat satu rule global di assets/css/style.css:
+      [hidden] { display: none !important; }
+
+3. Typo SQL fatal: "primary Fkey" (seharusnya "primary key") di
+   tabel timeline_events, yang bikin SEMUA tabel & data sesudahnya
+   gagal dibuat saat SQL dijalankan.
+
+
+BAGIAN B — PERBAIKAN & PENAMBAHAN (sesi kedua)
+---------------------------------------------------------------
+1. KEAMANAN DATABASE (penting!)
+   Sebelumnya semua tabel punya policy "public write" yang artinya
+   SIAPA SAJA yang tau link website bisa hapus/ubah semua data
+   (foto, surat, playlist, dst) lewat console browser.
+   Sekarang:
+   - guestbook_messages & wishes: publik cuma boleh INSERT (nulis
+     pesan/wish baru), tidak bisa ubah/hapus punya orang lain.
+   - Semua tabel lain (site_text, letters, photos, timeline_events,
+     little_things, reasons, map_points, tracks): publik cuma bisa
+     BACA. Nulis/ubah/hapus cuma bisa lewat akun admin yang login.
+
+   >>> YANG PERLU KAMU LAKUKAN SATU KALI DI SUPABASE DASHBOARD:
+   1. Buka Supabase Dashboard -> Authentication -> Users -> Add user
+   2. Bikin akun dengan:
+      - Email: admin@untuk-frio.com
+        (kalau mau ganti emailnya, ganti juga nilai ADMIN_EMAIL di
+        paling atas assets/js/admin.js biar sama persis)
+      - Password: PIN yang mau kamu pakai buat login admin (harus
+        6 digit angka biar cocok sama keypad-nya, atau kamu bisa
+        ganti PIN jadi password lebih panjang kalau mau lebih aman)
+   3. Selesai — panel admin sekarang login beneran ke Supabase,
+      bukan cuma cek angka doang di browser. Ada tombol "keluar"
+      juga di pojok atas panel admin buat logout.
+   4. JANGAN dihapus dulu tabelnya! Tinggal run ulang file
+      supabase-setup.sql yang baru ini di SQL Editor — aman
+      di-run berkali-kali, kapan pun, dalam kondisi apapun
+      (database baru maupun yang sudah pernah kamu isi kontennya).
+      Semua create table pakai "if not exists" dan semua policy
+      di-drop-lalu-dibuat-ulang otomatis, jadi konten yang udah
+      kamu masukin lewat admin panel (foto, surat, dll) TETAP AMAN,
+      cuma struktur & keamanannya yang diperbarui.
+
+2. GALERI FOTO SEKARANG BENERAN NAMPILIN FOTO
+   Sebelumnya kotak-kotak di galeri cuma gradien warna polos, foto
+   yang kamu upload lewat admin panel (kolom "URL Foto") gak pernah
+   benar-benar ditampilkan. Sekarang sudah diperbaiki — baik di
+   grid, polaroid wall, maupun lightbox foto besar. Kalau URL foto
+   belum diisi, otomatis fallback ke gradien seperti sebelumnya.
+
+3. COVER LAGU (fitur baru)
+   Kotak di "daftar lagu" yang kamu tanyain sebelumnya cuma gradien
+   dekoratif. Sekarang sudah ditambahkan:
+   - Kolom baru "cover_url" di tabel tracks
+   - Field baru di admin panel: "URL Cover Lagu" (opsional)
+   - Cover-nya otomatis muncul di daftar lagu & tampilan now-playing
+     besar. Kalau belum diisi, tetap fallback gradien.
+
+4. FAVICON — ikon hati kecil di tab browser, semua halaman.
+
+5. PREVIEW LINK (Open Graph / share ke WA, IG, dll)
+   Kalau link website ini di-share, muncul kartu preview dengan
+   judul, deskripsi, dan gambar yang beda-beda tiap halaman.
+   Gambar: assets/img/og-image.jpg (bisa diganti pakai foto sendiri,
+   tinggal replace file dengan nama yang sama).
+
+6. NOINDEX — semua halaman ditandai "noindex" biar tidak muncul di
+   hasil pencarian Google (web ini kan privat buat Frio).
+
+7. ALT TEXT — semua foto (galeri & cover lagu) punya teks alternatif
+   otomatis dari caption/judul, buat aksesibilitas.
+
+8. HALAMAN 404 — custom, senada tema web ini. File: 404.html
+
+
+BAGIAN C — FITUR TAMBAHAN (permintaan lanjutan)
+---------------------------------------------------------------
+1. LOADING BAR
+   Garis tipis warna plum di paling atas tiap halaman, muncul pas
+   data dari database masih dimuat, biar Frio tau halamannya lagi
+   proses, bukan nge-freeze.
+
+2. TOMBOL MUTE EFEK (pojok kanan bawah, ikon 🤍/🔇)
+   Buat matiin efek love-bubbles ambient & confetti kalau Frio lagi
+   pengen fokus (misal lagi baca surat atau dengerin suara). Pilihan
+   tersimpan otomatis, kepake terus di semua halaman.
+
+3. TOMBOL SHARE CEPAT (pojok kiri bawah, ikon 🔗)
+   Buat share link halaman yang lagi dibuka — di HP langsung muncul
+   menu share bawaan (WA, dll), di laptop otomatis nyalin link.
+
+4. KONFETI SPESIAL PERTAMA KALI BUKA WEB
+   Sekali seumur hidup (bukan tiap sesi/refresh) — pas Frio pertama
+   kali berhasil masuk lewat gerbang PIN utama, ada confetti spesial.
+
+5. PWA — BISA "DI-INSTALL" KAYAK APP
+   Kalau Frio buka websitenya di HP terus pilih "Add to Home Screen"
+   / "Install app" di browser, muncul ikon sendiri (hati pink) dan
+   kebuka tanpa address bar, kayak aplikasi beneran.
+   File terkait: manifest.json, service-worker.js, assets/img/icon-*.png
+   PENTING: service-worker.js WAJIB ada di folder paling luar/root
+   hosting (sejajar sama index.html), jangan dipindah ke dalam assets.
+
+6. POSISI TOMBOL MUTE/SHARE SUDAH DISESUAIKAN
+   Supaya gak numpuk sama navbar bawah pas di HP, tapi otomatis turun
+   normal pas di tablet/laptop (karena navbar-nya pindah jadi sidebar
+   kiri di layar lebar).
+
+7. RESPONSIVE — sudah dicek ulang: semua halaman punya breakpoint
+   buat HP kecil, tablet, laptop, sampai desktop besar. Navbar bawah
+   otomatis jadi sidebar kiri tipis mulai lebar >=900px.
+
+
+TENTANG API / SUPABASE YANG SUDAH ADA
+---------------------------------------------------------------
+File assets/js/supabase-config.js SUDAH berisi URL & key project
+Supabase yang sudah ada (bukan perlu bikin baru). Cukup login ke
+project itu di dashboard Supabase, lalu jalankan SQL & bikin akun
+admin seperti di atas.
+
+
+SOAL FILE AUDIO/GAMBAR
+---------------------------------------------------------------
+File-file kayak assets/audio/track1.mp3 atau URL foto/cover itu
+BUKAN dibuat otomatis — kamu tetap perlu upload file asli (musik,
+foto) ke Supabase Storage atau hosting gambar lain, terus paste
+link-nya di admin panel. Ini bukan bug, memang begitu desainnya
+(biar file besar gak numpuk di kode).
+
+Semua file JS sudah divalidasi ulang (node --check) sebelum dikirim,
+tidak ada error syntax. Tidak ada perubahan pada isi/konten personal
+(surat, caption, dsb) — semua murni bug fix + fitur teknis.

@@ -1,0 +1,189 @@
+/* ===========================================================
+   KEJUTAN PAGE
+=========================================================== */
+.block { padding: 20px 0 44px; text-align: center; }
+.block .section-label { justify-content: center; }
+
+/* ---- CAKE ---- */
+.cake-scene { display: flex; justify-content: center; padding: 20px 0; }
+.cake {
+  position: relative;
+  width: 160px;
+  height: 130px;
+  cursor: pointer;
+}
+.cake-base {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 46px;
+  background: var(--plum-deep);
+  border-radius: 6px;
+}
+.cake-mid {
+  position: absolute; bottom: 40px; left: 10px; right: 10px;
+  height: 38px;
+  background: var(--plum);
+  border-radius: 6px;
+}
+.cake-top {
+  position: absolute; bottom: 72px; left: 22px; right: 22px;
+  height: 30px;
+  background: var(--gold);
+  border-radius: 6px;
+}
+.candles {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+}
+.candle {
+  display: block;
+  width: 5px;
+  height: 26px;
+  background: repeating-linear-gradient(180deg, var(--ivory) 0 4px, var(--plum-deep) 4px 8px);
+  border-radius: 2px;
+}
+.flame {
+  position: absolute;
+  bottom: 124px;
+  font-size: 16px;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  animation: flameFlicker 1.4s ease-in-out infinite alternate;
+}
+#flame1 { left: 50%; transform: translateX(-27px); }
+#flame2 { left: 50%; transform: translateX(-2px); }
+#flame3 { left: 50%; transform: translateX(23px); }
+@keyframes flameFlicker {
+  from { transform: translateX(var(--tx, 0)) scale(1) rotate(-2deg); }
+  to   { transform: translateX(var(--tx, 0)) scale(1.12) rotate(2deg); }
+}
+.flame.out { opacity: 0; transform: translateY(-14px) scale(0.4) !important; animation: none; }
+
+.cake-hint {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.cake-hint.granted { color: var(--plum-deep); font-family: var(--font-display); font-style: italic; font-size: 14px; }
+
+/* ---- GIFT BOX ---- */
+.gift-scene { display: flex; justify-content: center; padding: 24px 0 8px; }
+.gift-box {
+  position: relative;
+  width: 120px;
+  height: 100px;
+  cursor: pointer;
+}
+.gift-body {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 68px;
+  background: var(--navy);
+  border-radius: 4px;
+}
+.gift-lid {
+  position: absolute; top: 12px; left: -6px; right: -6px;
+  height: 22px;
+  background: var(--plum-deep);
+  border-radius: 4px;
+  transform-origin: left center;
+  transition: transform 0.5s var(--ease);
+}
+.gift-ribbon-v {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 10px;
+  margin-left: -5px;
+  background: var(--gold);
+}
+.gift-ribbon-h {
+  position: absolute; top: 12px; left: -6px; right: -6px;
+  height: 10px;
+  background: var(--gold);
+}
+.gift-box.is-open .gift-lid {
+  transform: rotate(-100deg) translateY(-6px);
+}
+.gift-box:active { transform: scale(0.97); }
+
+.gift-hint { margin-top: 14px; font-size: 12.5px; color: var(--ink-soft); }
+
+.gift-message {
+  max-width: 340px;
+  margin: 22px auto 0;
+  padding: 20px;
+  background: var(--ivory-dim);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  display: none;
+}
+.gift-message.in { opacity: 1; transform: translateY(0); }
+.gift-message p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* ---- SURPRISE BUTTON ---- */
+.surprise-btn {
+  border: none;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease);
+}
+.surprise-btn:active { transform: scale(0.96); }
+
+/* ---- SURPRISE OVERLAY ---- */
+.surprise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: linear-gradient(160deg, var(--navy) 0%, var(--plum-deep) 100%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.surprise-overlay.show { display: flex; }
+.surprise-inner { max-width: 420px; text-align: center; }
+.surprise-line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 6vw, 28px);
+  color: var(--ivory);
+  margin: 0 0 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.surprise-line.in { opacity: 1; transform: translateY(0); }
+.surprise-name { color: var(--gold); font-size: clamp(26px, 7vw, 36px); }
+.surprise-close {
+  margin-top: 26px;
+  border: 1px solid rgba(247,245,240,0.35);
+  background: transparent;
+  color: var(--ivory);
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease) 2.6s;
+}
+.surprise-overlay.show .surprise-close { opacity: 0.85; }
+
+@media (min-width: 900px) {
+  .cake { width: 200px; height: 160px; }
+  .gift-box { width: 150px; height: 125px; }
+}

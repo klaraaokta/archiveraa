@@ -1,0 +1,175 @@
+/* (page-head & section-label sekarang ada di style.css, shared semua halaman) */
+
+/* ===========================================================
+   GALERI PAGE
+=========================================================== */
+.view-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--ivory-dim);
+  border-radius: 100px;
+  margin-bottom: 26px;
+}
+.view-btn {
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 12.5px;
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.view-btn.is-active { background: var(--ink); color: var(--ivory); }
+
+/* ---- grid ---- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 44px;
+}
+.photo-tile {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--plum) 0%, var(--navy) 100%);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: tileIn 0.6s var(--ease) forwards;
+}
+@keyframes tileIn { to { opacity: 1; transform: translateY(0); } }
+.photo-tile:nth-child(3n+1) { background: linear-gradient(135deg, var(--plum-deep), var(--plum)); }
+.photo-tile:nth-child(3n+2) { background: linear-gradient(135deg, var(--navy), var(--plum-deep)); }
+.photo-tile:nth-child(3n+3) { background: linear-gradient(135deg, var(--gold), var(--plum)); }
+.photo-tile-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.85);
+  background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 50%);
+}
+.photo-tile:active { transform: scale(0.97); }
+
+/* ---- polaroid wall ---- */
+.polaroid-wall {
+  position: relative;
+  min-height: 480px;
+  margin-bottom: 44px;
+  background: var(--ivory-dim);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.polaroid {
+  position: absolute;
+  width: 128px;
+  padding: 10px 10px 30px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 20px rgba(23,21,18,0.18);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.polaroid:hover { transform: scale(1.04) rotate(0deg) !important; box-shadow: 0 14px 26px rgba(23,21,18,0.24); z-index: 60 !important; }
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--plum), var(--navy));
+}
+.polaroid-cap {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---- timeline ---- */
+.timeline-block { padding: 12px 0 40px; }
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1.5px solid var(--line);
+}
+.t-item { position: relative; padding: 0 0 26px 22px; }
+.t-item::before {
+  content: "";
+  position: absolute;
+  left: -5.5px;
+  top: 3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--ivory);
+}
+.t-date { display: block; font-size: 11.5px; color: var(--plum-deep); margin-bottom: 3px; font-weight: 600; }
+.t-title { margin: 0 0 4px; font-family: var(--font-display); font-style: italic; font-size: 17px; }
+.t-desc { margin: 0; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+
+/* ===========================================================
+   LIGHTBOX
+=========================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(23,21,18,0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lbFade 0.3s var(--ease);
+}
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox-frame { width: min(84vw, 420px); text-align: center; }
+.lightbox-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--plum), var(--navy));
+  animation: lbScale 0.35s var(--ease);
+}
+@keyframes lbScale { from { transform: scale(0.94); opacity: 0.6; } to { transform: scale(1); opacity: 1; } }
+.lightbox-caption { margin-top: 14px; color: var(--ivory); font-size: 13.5px; opacity: 0.85; }
+.lightbox-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--ivory); font-size: 20px; cursor: pointer;
+}
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: var(--ivory); font-size: 34px; cursor: pointer;
+  width: 46px; height: 46px;
+}
+.lightbox-prev { left: 6px; }
+.lightbox-next { right: 6px; }
+
+@media (min-width: 600px) {
+  .photo-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 900px) {
+  .photo-grid { grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .timeline-block, .polaroid-wall { max-width: 640px; }
+}
+
+/* Foto asli (dari image_url) ngisi penuh kotaknya; kalau belum
+   ada foto, gradien di belakangnya tetap jadi placeholder cantik. */
+.photo-tile img,
+.polaroid-img img,
+.lightbox-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.lightbox-photo { display: flex; }

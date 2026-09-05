@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#B6555F">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>suara untuk kamu 🎙️</title>
+  <meta name="description" content="pesan suara langsung dari aku buat kamu.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="suara untuk kamu 🎙️">
+  <meta property="og:description" content="pesan suara langsung dari aku buat kamu.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="suara untuk kamu 🎙️">
+  <meta name="twitter:description" content="pesan suara langsung dari aku buat kamu.">
+  <meta name="twitter:image" content="assets/img/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/suara.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="topbar-mark" href="index.html">untuk Frio</a>
+      <span class="topbar-day">Suara</span>
+    </header>
+
+    <main class="home suara-page">
+      <section class="voice-scene">
+        <p class="page-kicker">bukan cuma teks, ini beneran suara aku</p>
+        <h1 class="page-title">tekan buat dengerin</h1>
+
+        <button class="voice-orb" id="voiceOrb" aria-label="Putar/jeda rekaman suara">
+          <span class="voice-orb-ring r1"></span>
+          <span class="voice-orb-ring r2"></span>
+          <span class="voice-icon" id="voiceIcon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M10 8.5v9l7.5-4.5-7.5-4.5z" fill="currentColor" />
+            </svg>
+          </span>
+        </button>
+
+        <div class="voice-wave" id="voiceWave"></div>
+
+        <div class="voice-time">
+          <span id="timeCurrent">0:00</span>
+          <span id="timeTotal">0:00</span>
+        </div>
+
+        <p class="voice-caption">"selamat ulang tahun, Frio." — sebuah rekaman kecil, tekan play kalau kamu udah siap
+          dengernya.</p>
+      </section>
+    </main>
+
+    <audio id="voiceAudio" preload="metadata" src="assets/sfx/voice-note.mp3"></audio>
+
+    <nav class="tabbar" aria-label="Navigasi utama">
+      <a class="tab" href="index.html" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 9.5L10 3l7 6.5M5 8v8.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V8" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="surat.html" aria-label="Surat">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2.5 5.5h15v9a1 1 0 01-1 1h-13a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.5"
+            stroke-linejoin="round" />
+          <path d="M3 5.8l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="galeri.html" aria-label="Galeri">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2.5" y="3.5" width="15" height="13" rx="1.2" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="7" cy="8" r="1.4" stroke="currentColor" stroke-width="1.4" />
+          <path d="M3.5 14.5l4-4 3 3 3.5-4 3.5 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="musik.html" aria-label="Musik">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 15a2 2 0 100-4 2 2 0 000 4zM15 13a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+            stroke-width="1.5" />
+          <path d="M9.5 15V5.8L17 4.5v8.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="tamu.html" aria-label="Guestbook">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 16.5V5a1.5 1.5 0 011.5-1.5h9A1.5 1.5 0 0116 5v11.5l-3-2-2.5 2-2.5-2-2.5 2-1.5-.5z"
+            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/suara.js"></script>
+</body>
+
+</html>

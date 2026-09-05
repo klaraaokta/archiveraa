@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#B6555F">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>galeri kita 📸</title>
+  <meta name="description" content="kumpulan foto-foto kenangan kita berdua.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="galeri kita 📸">
+  <meta property="og:description" content="kumpulan foto-foto kenangan kita berdua.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="galeri kita 📸">
+  <meta name="twitter:description" content="kumpulan foto-foto kenangan kita berdua.">
+  <meta name="twitter:image" content="assets/img/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/galeri.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="topbar-mark" href="index.html">untuk Frio</a>
+      <span class="topbar-day">Galeri</span>
+    </header>
+
+    <main class="home galeri-page">
+
+      <section class="page-head">
+        <p class="page-kicker">setiap foto, satu cerita</p>
+        <h1 class="page-title">galeri kita</h1>
+      </section>
+
+      <!-- view toggle -->
+      <div class="view-toggle" role="tablist" aria-label="Mode tampilan galeri">
+        <button class="view-btn is-active" data-view="grid" role="tab" aria-selected="true">grid</button>
+        <button class="view-btn" data-view="wall" role="tab" aria-selected="false">polaroid wall</button>
+      </div>
+
+      <!-- GRID VIEW -->
+      <section class="photo-grid" id="photoGrid"></section>
+
+      <!-- POLAROID WALL VIEW -->
+      <section class="polaroid-wall" id="polaroidWall" hidden></section>
+
+      <!-- Timeline -->
+      <section class="timeline-block">
+        <div class="section-label"><span class="section-line"></span><span>perjalanan kita</span></div>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-close" id="lightboxClose" aria-label="Tutup">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Sebelumnya">‹</button>
+      <div class="lightbox-frame">
+        <div class="lightbox-photo" id="lightboxPhoto"></div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Berikutnya">›</button>
+    </div>
+
+    <nav class="tabbar" aria-label="Navigasi utama">
+      <a class="tab" href="index.html" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 9.5L10 3l7 6.5M5 8v8.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V8" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="surat.html" aria-label="Surat">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2.5 5.5h15v9a1 1 0 01-1 1h-13a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.5"
+            stroke-linejoin="round" />
+          <path d="M3 5.8l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab is-active" href="galeri.html" aria-label="Galeri">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2.5" y="3.5" width="15" height="13" rx="1.2" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="7" cy="8" r="1.4" stroke="currentColor" stroke-width="1.4" />
+          <path d="M3.5 14.5l4-4 3 3 3.5-4 3.5 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="musik.html" aria-label="Musik">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 15a2 2 0 100-4 2 2 0 000 4zM15 13a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+            stroke-width="1.5" />
+          <path d="M9.5 15V5.8L17 4.5v8.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="tamu.html" aria-label="Guestbook">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 16.5V5a1.5 1.5 0 011.5-1.5h9A1.5 1.5 0 0116 5v11.5l-3-2-2.5 2-2.5-2-2.5 2-1.5-.5z"
+            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/galeri.js"></script>
+</body>
+
+</html>

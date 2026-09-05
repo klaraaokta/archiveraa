@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#B6555F">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>kejutan buat kamu 🎁</title>
+  <meta name="description" content="ada kejutan kecil buat kamu di sini.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="kejutan buat kamu 🎁">
+  <meta property="og:description" content="ada kejutan kecil buat kamu di sini.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="kejutan buat kamu 🎁">
+  <meta name="twitter:description" content="ada kejutan kecil buat kamu di sini.">
+  <meta name="twitter:image" content="assets/img/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/kejutan.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <header class="topbar">
+      <a class="topbar-mark" href="index.html">untuk Frio</a>
+      <span class="topbar-day">Kejutan</span>
+    </header>
+
+    <main class="home kejutan-page">
+      <section class="page-head">
+        <p class="page-kicker">tiga hal kecil, satu penutup manis</p>
+        <h1 class="page-title">kejutan buat kamu</h1>
+      </section>
+
+      <!-- CAKE -->
+      <section class="block cake-block">
+        <div class="section-label"><span class="section-line"></span><span>tiup lilinnya</span></div>
+        <div class="cake-scene">
+          <div class="cake" id="cake">
+            <div class="flame" id="flame1">🔥</div>
+            <div class="flame" id="flame2">🔥</div>
+            <div class="flame" id="flame3">🔥</div>
+            <div class="candles">
+              <span class="candle"></span>
+              <span class="candle"></span>
+              <span class="candle"></span>
+            </div>
+            <div class="cake-top"></div>
+            <div class="cake-mid"></div>
+            <div class="cake-base"></div>
+          </div>
+        </div>
+        <p class="cake-hint" id="cakeHint">tekan kuenya buat tiup lilin satu-satu</p>
+      </section>
+
+      <!-- GIFT BOX -->
+      <section class="block gift-block">
+        <div class="section-label"><span class="section-line"></span><span>kado virtual</span></div>
+        <div class="gift-scene">
+          <div class="gift-box" id="giftBox">
+            <div class="gift-lid"></div>
+            <div class="gift-body"></div>
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+        </div>
+        <p class="gift-hint">ketuk kadonya</p>
+        <div class="gift-message" id="giftMessage">
+          <p>isi kadonya bukan barang, tapi janji: aku bakal terus usaha ada buat kamu, di hari biasa atau di hari
+            spesial kayak sekarang. selamat ulang tahun, Frio 🤍</p>
+        </div>
+      </section>
+
+      <!-- SURPRISE BUTTON -->
+      <section class="block surprise-block">
+        <button class="surprise-btn" id="surpriseBtn">buka kejutan terakhir</button>
+      </section>
+    </main>
+
+    <!-- SURPRISE OVERLAY -->
+    <div class="surprise-overlay" id="surpriseOverlay">
+      <div class="surprise-inner">
+        <p class="surprise-line" data-d="0">selamat ulang tahun,</p>
+        <p class="surprise-line surprise-name" data-d="1">Frio Defrianto.</p>
+        <p class="surprise-line" data-d="2">makasih udah jadi bagian dari cerita aku.</p>
+        <p class="surprise-line" data-d="3">semoga umur 19 ini penuh hal baik —</p>
+        <p class="surprise-line" data-d="4">buat kamu, dan buat kita. 🤍</p>
+        <button class="surprise-close" id="surpriseClose">tutup</button>
+      </div>
+    </div>
+
+    <nav class="tabbar" aria-label="Navigasi utama">
+      <a class="tab" href="index.html" aria-label="Home">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M3 9.5L10 3l7 6.5M5 8v8.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V8" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="surat.html" aria-label="Surat">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2.5 5.5h15v9a1 1 0 01-1 1h-13a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.5"
+            stroke-linejoin="round" />
+          <path d="M3 5.8l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="galeri.html" aria-label="Galeri">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="2.5" y="3.5" width="15" height="13" rx="1.2" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="7" cy="8" r="1.4" stroke="currentColor" stroke-width="1.4" />
+          <path d="M3.5 14.5l4-4 3 3 3.5-4 3.5 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="musik.html" aria-label="Musik">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M7.5 15a2 2 0 100-4 2 2 0 000 4zM15 13a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor"
+            stroke-width="1.5" />
+          <path d="M9.5 15V5.8L17 4.5v8.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <a class="tab" href="tamu.html" aria-label="Guestbook">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 16.5V5a1.5 1.5 0 011.5-1.5h9A1.5 1.5 0 0116 5v11.5l-3-2-2.5 2-2.5-2-2.5 2-1.5-.5z"
+            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/effects.js"></script>
+  <script src="assets/js/kejutan.js"></script>
+</body>
+
+</html>
