@@ -245,7 +245,7 @@
   transition: max-height 0.6s var(--ease), opacity 0.5s var(--ease), margin-top 0.5s var(--ease), padding 0.5s var(--ease);
 }
 .letter-paper--2.is-open {
-  max-height: 900px;
+  max-height: 4000px;
   opacity: 1;
   margin-top: 18px;
   padding-top: 36px;
