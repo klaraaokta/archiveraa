@@ -58,10 +58,7 @@
       app.hidden = false;
       initAdmin();
     } else {
-      // --- SEMENTARA UNTUK DEBUG: tampilkan pesan error asli dari Supabase ---
-      hint.textContent = "ERR: " + error.message + " (status " + error.status + ")";
-      // Baris asli (aktifkan lagi kalau debug sudah selesai):
-      // hint.textContent = "PIN salah, coba lagi";
+      hint.textContent = "PIN salah, coba lagi";
       dotsEl.classList.remove("shake");
       void dotsEl.offsetWidth;
       dotsEl.classList.add("shake");
