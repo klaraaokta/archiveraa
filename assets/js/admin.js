@@ -4,7 +4,7 @@
   // sebagai PASSWORD akun itu -- jadi PIN keypad ini beneran
   // login ke Supabase, bukan cuma cek angka doang seperti sebelumnya.
   // Lihat CATATAN-PERBAIKAN.txt buat cara setup akunnya.
-  const ADMIN_EMAIL = "admin@untuk-frio.com";
+  const ADMIN_EMAIL = "admin@untuk-sayang.com";
 
   const gate = document.getElementById("adminGate");
   const app = document.getElementById("adminApp");
