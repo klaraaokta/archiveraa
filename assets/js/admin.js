@@ -36,10 +36,10 @@
       submit();
       return;
     }
-    if (value.length >= 6) return;
+    if (value.length >= 8) return;
     value += key;
     renderDots();
-    if (value.length === 6) setTimeout(submit, 150);
+    if (value.length === 8) setTimeout(submit, 150);
   }
 
   async function submit() {
